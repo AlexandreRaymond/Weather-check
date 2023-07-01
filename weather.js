@@ -22,6 +22,8 @@ export function getWeather(lat, lon, timezone) {
 }
 
 function parseCurrentWeather({ current_weather, daily }) {
+  console.log(current_weather);
+  console.log("boo", daily);
   const {
     temperature: currentTemp,
     windspeed: windSpeed,
@@ -35,6 +37,7 @@ function parseCurrentWeather({ current_weather, daily }) {
     apparent_temperature_min: [minFeelsLike],
     precipitation_sum: [precip],
   } = daily;
+
   return {
     currentTemp: Math.round(currentTemp),
     highTemp: Math.round(maxTemp),
