@@ -56,10 +56,10 @@ const dayCardTemplate = document.getElementById("day-card-template");
 function renderDailyWeather(daily) {
   dailySection.innerHTML = "";
   daily.forEach((day) => {
-    const element = dayCardTemplate.contentEditable.cloneNode(true);
+    const element = dayCardTemplate.content.cloneNode(true);
     setValue("temp", day.maxTemp, { parent: element });
     setValue("date", DAY_FORMATTER.format(day.timestamp), { parent: element });
-    element.querySelector("[data-icons]").src = getIconUrl(day.iconCode);
+    element.querySelector("[data-icon]").src = getIconUrl(day.iconCode);
     dailySection.append(element);
   });
 }
@@ -70,7 +70,7 @@ const hourRowTemplate = document.getElementById("hour-row-template");
 function renderHourlyWeather(hourly) {
   hourlySection.innerHTML = "";
   hourly.forEach((hour) => {
-    const element = hourRowTemplate.contentEditable.cloneNode(true);
+    const element = hourRowTemplate.content.cloneNode(true);
     setValue("temp", hour.temp, { parent: element });
     setValue("fl-temp", hour.feelsLike, { parent: element });
     setValue("wind", hour.windSpeed, { parent: element });
@@ -79,7 +79,7 @@ function renderHourlyWeather(hourly) {
     setValue("time", HOUR_FORMATTER.format(hour.timestamp), {
       parent: element,
     });
-    element.querySelector("[data-icons]").src = getIconUrl(hour.iconCode);
+    element.querySelector("[data-icon]").src = getIconUrl(hour.iconCode);
     hourlySection.append(element);
   });
 }
